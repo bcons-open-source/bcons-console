@@ -1,0 +1,1501 @@
+$color950: #030712
+$color900: #111827
+$color800: #1f2937
+$color700: #374151
+$color600: #4b5563
+$color500: #6b7280
+$color400: #9ca3af
+$color300: #d1d5db
+$color200: #e5e7eb
+$color100: #f3f4f6
+$color50: #f9fafb
+
+
+
+$primary950: #082f49
+$primary900: #0c4a6e
+$primary800: #075985
+$primary700: #0369a1
+$primary600: #0284c7
+$primary500: #0ea5e9
+$primary400: #38bdf8
+$primary300: #7dd3fc
+$primary200: #bae6fd
+$primary100: #e0f2fe
+$primary50: #f0f9ff
+
+$primary: #02adb5
+
+
+
+@font-face
+  font-family: 'MonaspaceNeon'
+  src: url('../fonts/MonaspaceNeonVar.woff2')
+  font-weight: 100 900
+  font-stretch: 75% 125%
+  font-style: normal
+  font-variant-ligatures: discretionary-ligatures
+
+@font-face
+  font-family: 'Pretendard'
+  font-weight: 45 920
+  font-style: normal
+  font-display: swap
+  src: url('../fonts/PretendardVariable.woff2') format('woff2-variations')
+
+
+\:root
+  --color950: #030712
+  --color900: #111827
+  --color800: #1f2937
+  --color700: #374151
+  --color600: #4b5563
+  --color500: #6b7280
+  --color400: #9ca3af
+  --color300: #d1d5db
+  --color200: #e5e7eb
+  --color100: #f3f4f6
+  --color50: #f9fafb
+
+@media (prefers-color-scheme: dark)
+  \:root
+    --background: #{$color900}
+    --mainColor: #{$color400}
+    --borders: #{$color700}
+    --borders-dimmed: #{$color700}
+    --inputBg: #{$color700}
+
+// Reset: https://andy-bell.co.uk/a-more-modern-css-reset
+*, *::before, *::after
+  box-sizing: border-box
+
+html
+  -moz-text-size-adjust: none
+  -webkit-text-size-adjust: none
+  text-size-adjust: none
+
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd
+  margin: 0
+  font-size: 0.9rem
+  font-family: "Pretendard", sans-serif
+
+p
+  margin-block-end: 1.5rem
+  line-height: 1.5rem
+
+ul[role='list'], ol[role='list']
+  list-style: none
+
+body
+  min-block-size: 100vh
+  line-height: 1.5
+
+h1, h2, h3, h4, button, input, label
+  line-height: 1.1
+
+h1, h2, h3, h4
+  text-wrap: balance
+
+img, picture
+  max-inline-size: 100%
+  display: block
+
+input, button, textarea, select
+  font: inherit
+
+textarea:not([rows])
+  min-block-size: 10em
+
+// Styles used in more than one page
+header.logo
+  padding-block: 20px
+  img
+    max-block-size: 60px
+    margin: auto
+    display: block
+a
+  color: #00adb5
+
+::-webkit-scrollbar
+  width: 5px
+
+::-webkit-scrollbar-thumb
+  background: #bbb
+  border-radius: 20px
+
+::-webkit-scrollbar-track
+  background: #ddd
+  border-radius: 20px
+
+.bconsConsoleFridge
+  display: none
+
+.bconsConsoleLoading
+  display: grid
+  place-items: center
+  block-size: 100vb
+
+.bconsConsole
+  block-size: 100vb
+  background-color: var(--color100)
+  overflow: hidden
+  header, #noProject
+    background-color: var(--color100)
+
+  .typeTab
+    background: var(--color50)
+    border: 0
+    border-inline-end: 1px solid var(--color200)
+    user-select: none
+
+  .projectData, .noProjectData
+    display: none
+
+  .bconsDebugArea
+    display: none
+    inline-size: 100%
+    block-size: 50%
+    background: var(--color900)
+    color: var(--color200)
+    border: 0
+    padding: 10px
+    &.visible
+      display: block
+
+  .noProjectData
+    block-size: 100vb
+    grid-template-rows: auto 1fr
+    align-items: center
+
+    header
+      display: flex
+      justify-content: center
+      padding-block: 20px
+    p
+      text-align: center
+
+
+  &.noProject .noProjectData, &.hasProject .projectData
+    display: grid
+    block-size: 100vb
+
+
+
+  .logoSmall svg
+    block-size: 60px
+    inline-size: auto
+
+  .logoImg
+    block-size: 60px
+  &.hasProject .projectData
+    grid-template-areas: "header" "messages"
+    grid-template-rows: auto 1fr
+    container: bconsoleContainer / inline-size
+
+    header
+      position: relative
+      padding: 10px
+      grid-area: header
+      display: flex
+      justify-content: space-between
+      align-items: center
+      gap: 30px
+
+      .mobCurrentTab
+        display: none
+        block-size: 24px
+        inline-size: 36px
+        filter: grayscale(1)
+        cursor: pointer
+        opacity: 0.6
+        transition: all 0.25s ease
+        background-repeat: no-repeat
+        &:hover
+          opacity: 1
+
+      a
+        text-decoration: none
+      nav
+        --in-small-screen: no
+        display: flex
+        font-size: 0.9rem
+        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px
+        border-radius: 8px
+
+        .typeTab
+          display: flex
+          justify-content: center
+          align-items: center
+          gap: 5px
+          cursor: pointer
+          padding: 12px
+          border-color: var(--color200)
+          min-inline-size: 80px
+          transition: all 0.25s
+          position: relative
+
+          span, div
+            opacity: 0.7
+            position: relative
+            transition: all 0.25s
+          span
+            font-size: 11px
+            opacity: 0.4
+          span:not(:empty)
+            &::before
+              content: "("
+            &::after
+              content: ")"
+
+          &.selected
+            span, div
+              opacity: 1
+              //transform: translateY(-3px)
+              font-weight: 500
+              color: $primary400
+
+          &.empty
+            span, div
+              opacity: 0.4
+          &:first-of-type
+            border-start-start-radius: 8px
+            border-end-start-radius: 8px
+          &:last-of-type
+            border-start-end-radius: 8px
+            border-end-end-radius: 8px
+            border-inline-end: 0
+
+          .tabIcon
+            inline-size: 24px
+            block-size: 24px
+            background-size: contain
+            background-repeat: no-repeat
+            display: none
+            transition: all 0.25s ease
+            &:hover
+              opacity: 0.8
+
+      .tabIcon.l, .mobCurrentTab.l
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%2300adb5"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clip-rule="evenodd" /></svg>')
+      .tabIcon.w, .mobCurrentTab.w
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23dbd411"><path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 5zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" /></svg>')
+      .mobCurrentTab.w
+        opacity: 0.9
+      .tabIcon.e, .mobCurrentTab.e
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23d60f0f"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" /></svg>')
+      .mobCurrentTab.e
+        opacity: 0.4
+      .tabIcon.r, .mobCurrentTab.r
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%2300adb5"><path fill-rule="evenodd" d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z" clip-rule="evenodd" /></svg>')
+      .tabIcon.s, .mobCurrentTab.s
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23130fd6"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-5.5-2.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM10 12a5.99 5.99 0 00-4.793 2.39A6.483 6.483 0 0010 16.5a6.483 6.483 0 004.793-2.11A5.99 5.99 0 0010 12z" clip-rule="evenodd" /></svg>')
+      .mobCurrentTab.s
+        opacity: 0.4
+      .tabIcon.c, .mobCurrentTab.c
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%230f79d7"><path d="M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A9,9 0 0,0 21,12C21,11.5 20.96,11 20.87,10.5C20.6,10 20,10 20,10H18V9C18,8 17,8 17,8H15V7C15,6 14,6 14,6H13V4C13,3 12,3 12,3M9.5,6A1.5,1.5 0 0,1 11,7.5A1.5,1.5 0 0,1 9.5,9A1.5,1.5 0 0,1 8,7.5A1.5,1.5 0 0,1 9.5,6M6.5,10A1.5,1.5 0 0,1 8,11.5A1.5,1.5 0 0,1 6.5,13A1.5,1.5 0 0,1 5,11.5A1.5,1.5 0 0,1 6.5,10M11.5,11A1.5,1.5 0 0,1 13,12.5A1.5,1.5 0 0,1 11.5,14A1.5,1.5 0 0,1 10,12.5A1.5,1.5 0 0,1 11.5,11M16.5,13A1.5,1.5 0 0,1 18,14.5A1.5,1.5 0 0,1 16.5,16H16.5A1.5,1.5 0 0,1 15,14.5H15A1.5,1.5 0 0,1 16.5,13M11,16A1.5,1.5 0 0,1 12.5,17.5A1.5,1.5 0 0,1 11,19A1.5,1.5 0 0,1 9.5,17.5A1.5,1.5 0 0,1 11,16Z" /></svg>')
+
+
+      .icons
+        display: flex
+        align-items: center
+        gap: 20px
+        user-select: none
+        position: relative
+        button
+          border: 0
+          background-color: transparent
+        img, svg
+          block-size: 24px
+          min-inline-size: 24px
+          transition: all 0.25s
+          opacity: 0.3
+          cursor: pointer
+          fill: var(--color900)
+          &:hover
+            opacity: 0.6
+
+
+
+
+    .bconsBody
+      grid-area: messages
+      position: relative
+
+      .actionResult
+        position: absolute
+        inset-inline-start: 0
+        inset-block-start: 0
+        inline-size: 100vi
+        display: flex
+        justify-content: center
+        z-index: 3
+        transition: all 0.25s ease
+        transform: translateY(0)
+        opacity: 1
+
+        div
+          display: block
+          padding: 5px 10px
+          border-radius: 5px
+          background-color: var(--color800)
+          color: var(--color50)
+          font-size: 0.8rem
+        &.empty
+          opacity: 0
+          transform: translateY(-10px)
+
+      .typePanel
+        opacity: 0
+        outline: none
+        transition: all 0.25s
+        z-index: 1
+        position: absolute
+        inset-inline-start: 0
+        inset-block-start: 0
+        block-size: 100%
+        inline-size: 100%
+        overflow: auto
+        padding: 10px
+        display: flex
+        flex-direction: column
+        gap: 10px
+        color: var(--color800)
+        &.invertedMsgOrder
+          flex-direction: column-reverse
+          details
+            margin-block-end: auto
+          .msg
+            margin-block-end: auto
+        &.hideDate time
+          display: none
+        &.hideUrl .request
+          display: none
+        &.hideDomain .domain
+          display: none
+        &.hideFile .msg:not(.ping) .fileInfo
+          visibility: hidden
+
+        &.selected
+          opacity: 1
+          z-index: 2
+        &.hasMessages .tipContainer
+          display: none
+        &.hideTips .tipContainer .tip>div
+          display: none
+    .bconsBody
+      .encryptedMessage
+        cursor: pointer
+        opacity: 0.5
+        border: 0
+        img
+          block-size: 16px
+
+      .plainText
+        white-space: pre-wrap
+        line-height: 1.2rem
+        word-break: break-word
+      details
+        background: var(--color50)
+        border: 1px solid var(--color200)
+        border-radius: 3px
+
+
+        &.group1, &.red
+          background-color: #FCA5A5
+          .btData, .filterData
+            background-color: #FECACA
+          summary
+            border-block-end-color: #F87171
+          .btItem:not(:last-child):after
+            color: #FCA5A5
+
+        &.group2, &.orange
+          background-color: #FDBA74
+          .btData, .filterData
+            background-color: #FED7AA
+          summary
+            border-block-end-color: #FB923C
+          .btItem:not(:last-child):after
+            color: #FDBA74 !important
+
+        &.group3, &.amber
+          background-color: #FCD34D
+          .btData, .filterData
+            background-color: #FDE68A
+          summary
+            border-block-end-color: #FBBF24
+          .btItem:not(:last-child):after
+            color: #FCD34D !important
+
+        &.group4, &.yellow
+          background-color: #FDE047
+          .btData, .filterData
+            background-color: #FEF08A
+          summary
+            border-block-end-color: #FACC15
+          .btItem:not(:last-child):after
+            color: #FDE047 !important
+
+        &.group5, &.lime
+          background-color: #BEF264
+          .btData, .filterData
+            background-color: #D9F99D
+          summary
+            border-block-end-color: #A3E635
+          .btItem:not(:last-child):after
+            color: #BEF264 !important
+
+        &.group6, &.green
+          background-color: #86EFAC
+          .btData, .filterData
+            background-color: #BBF7D0
+          summary
+            border-block-end-color: #4ADE80
+          .btItem:not(:last-child):after
+            color: #86EFAC !important
+
+        &.group7, &.emerald
+          background-color: #6EE7B7
+          .btData, .filterData
+            background-color: #A7F3D0
+          summary
+            border-block-end-color: #34D399
+          .btItem:not(:last-child):after
+            color: #6EE7B7 !important
+
+        &.group8, &.teal
+          background-color: #5EEAD4
+          .btData, .filterData
+            background-color: #99F6E4
+          summary
+            border-block-end-color: #2DD4BF
+          .btItem:not(:last-child):after
+            color: #5EEAD4 !important
+
+        &.group9, &.cyan
+          background-color: #67E8F9
+          .btData, .filterData
+            background-color: #A5F3FC
+          summary
+            border-block-end-color: #22D3EE
+          .btItem:not(:last-child):after
+            color: #67E8F9 !important
+
+        &.group10, &.sky
+          background-color: #7DD3FC
+          .btData, .filterData
+            background-color: #BAE6FD
+          summary
+            border-block-end-color: #38BDF8
+          .btItem:not(:last-child):after
+            color: #7DD3FC !important
+
+        &.group11, &.blue
+          background-color: #93C5FD
+          .btData, .filterData
+            background-color: #BFDBFE
+          summary
+            border-block-end-color: #60A5FA
+          .btItem:not(:last-child):after
+            color: #93C5FD !important
+
+        &.group12, &.indigo
+          background-color: #A5B4FC
+          .btData, .filterData
+            background-color: #C7D2FE
+          summary
+            border-block-end-color: #818CF8
+          .btItem:not(:last-child):after
+            color: #A5B4FC !important
+
+        &.group13, &.violet
+          background-color: #C4B5FD
+          .btData, .filterData
+            background-color: #DDD6FE
+          summary
+            border-block-end-color: #A78BFA
+          .btItem:not(:last-child):after
+            color: #C4B5FD !important
+
+        &.group14, &.purple
+          background-color: #D8B4FE
+          .btData, .filterData
+            background-color: #E9D5FF
+          summary
+            border-block-end-color: #C084FC
+          .btItem:not(:last-child):after
+            color: #D8B4FE !important
+
+        &.group15, &.fuchsia
+          background-color: #F0ABFC
+          .btData, .filterData
+            background-color: #F5D0FE
+          summary
+            border-block-end-color: #E879F9
+          .btItem:not(:last-child):after
+            color: #F0ABFC !important
+
+        &.group16, &.pink
+          background-color: #F9A8D4
+          .btData, .filterData
+            background-color: #FBCFE8
+          summary
+            border-block-end-color: #F472B6
+          .btItem:not(:last-child):after
+            color: #F9A8D4 !important
+
+        &.group17, &.rose
+          background-color: #FDA4AF
+          .btData, .filterData
+            background-color: #FECDD3
+          summary
+            border-block-end-color: #FB7185
+          .btItem:not(:last-child):after
+            color: #FDA4AF !important
+
+        &.group18, &.stone
+          background-color: #D6D3D1
+          .btData, .filterData
+            background-color: #E7E5E4
+          summary
+            border-block-end-color: #A8A29E
+          .btItem:not(:last-child):after
+            color: #D6D3D1 !important
+
+        &.group19, &.neutral
+          background-color: #D4D4D4
+          .btData, .filterData
+            background-color: #E5E5E5
+          summary
+            border-block-end-color: #A3A3A3
+          .btItem:not(:last-child):after
+            color: #D4D4D4 !important
+
+        &.group20, &.zinc
+          background-color: #D4D4D8
+          .btData, .filterData
+            background-color: #E4E4E7
+          summary
+            border-block-end-color: #A1A1AA
+          .btItem:not(:last-child):after
+            color: #D4D4D8 !important
+
+        &.group21, &.gray
+          background-color: #D1D5DB
+          .btData, .filterData
+            background-color: #E5E7EB
+          summary
+            border-block-end-color: #9CA3AF
+          .btItem:not(:last-child):after
+            color: #D1D5DB !important
+
+        &.group22, &.slate
+          background-color: #CBD5E1
+          .btData, .filterData
+            background-color: #E2E8F0
+          summary
+            border-block-end-color: #94A3B8
+          .btItem:not(:last-child):after
+            color: #CBD5E1 !important
+
+
+        .innerMsgList
+          display: flex
+          flex-direction: column
+          gap: 10px
+          padding: 10px
+
+        summary
+          cursor: pointer
+          font-size: 0.75rem
+          font-weight: 600
+          padding: 5px 10px
+          border-block-end: 1px solid var(--color200)
+          span
+            font-size: 0.6rem
+            opacity: 0.6
+        &:not([open]) summary
+          border-block-end: 0
+        .msg.detail_e .msgContent
+          color: #a90000
+        .msg.detail_w .msgContent
+          color: #828500
+      .msg
+        display: flex
+        flex-direction: column
+        gap: 5px
+        font-size: 0.7rem
+
+        &:not([data-encrypted])
+          .encryptedMessage
+            display: none
+        p, figure, blockquote, dl, dd
+          font-size: 0.7rem
+
+        ul.errorList
+          color: #EF4444
+          list-style-type: circle
+          padding: 0 40px
+        .msgHeader
+          display: flex
+          align-items: center
+          gap: 10px
+          .actions
+            display: flex
+            align-items: center
+            gap: 10px
+          button
+            background-color: transparent
+            border: 0
+            padding: 0
+            img
+              min-inline-size: 16px
+              min-block-size: 16px
+            &:first-of-type
+              padding-inline-start: 0
+          .pingCaption
+            font-weight: 550
+        &.ping
+          background: var(--color300)
+          border-radius: 9px
+          .msgHeader
+            justify-content: center
+            .fileInfo
+              flex-grow: initial
+        &.hiddenByUrlFilter, &.hiddenByDomainFilter, &.hiddenByFileFilter
+          display: none
+        .msgContent, time
+          font-family: "Monaspace Neon", monospace
+        .msgContent
+          line-height: 1rem
+          &.group1, &.red
+            color: #DC2626
+          &.group2, &.orange
+            color: #EA580C
+          &.group3, &.amber
+            color: #D97706
+          &.group4, &.yellow
+            color: #CA8A04
+          &.group5, &.lime
+            color: #65A30D
+          &.group6, &.green
+            color: #16A34A
+          &.group7, &.emerald
+            color: #059669
+          &.group8, &.teal
+            color: #0D9488
+          &.group9, &.cyan
+            color: #0891B2
+          &.group10, &.sky
+            color: #0284C7
+          &.group11, &.blue
+            color: #2563EB
+          &.group12, &.indigo
+            color: #4F46E5
+          &.group13, &.violet
+            color: #7C3AED
+          &.group14, &.purple
+            color: #9333EA
+          &.group15, &.fuchsia
+            color: #C026D3
+          &.group16, &.pink
+            color: #DB2777
+          &.group17, &.rose
+            color: #E11D48
+          &.group18, &.stone
+            color: #44403C
+          &.group19, &.neutral
+            color: #404040
+          &.group20, &.zinc
+            color: #3F3F46
+          &.group21, &.gray
+            color: #374151
+          &.group22, &.slate
+            color: #334155
+        .btIcon, .filterIcon
+          block-size: 14px
+          opacity: 0.6
+          cursor: pointer
+        time, .request, .fileInfo
+          font-size: 0.6rem
+          line-height: 1.2rem
+
+        .fileInfo
+          flex-grow: 1
+          text-align: end
+        .domain
+          color: #d96908
+        .btItem
+          display: flex
+          flex-direction: column
+          gap: 5px
+          .file
+            color: #00a930
+
+        time
+          color: #333
+          transform: translateY(1px)
+        .request
+          color: #0369A1
+        .fileInfo, .btItem .file
+          color: #047857
+        .msg.detail_w .msgContent
+          color: #a16207
+        .msg.detail_e .msgContent
+          color: #E11D48
+
+        .tableData table
+          border-collapse: collapse
+          inline-size: 100%
+          th, td
+            border: 1px solid var(--color300)
+            padding: 5px 6px
+          th
+            text-align: start
+            background-color: var(--color200)
+            cursor: pointer
+          th[data-sort-order=desc]:after
+            content: "▼"
+            position: absolute
+            inset-inline-end: 5px
+          th[data-sort-order=asc]:after
+            content: "▲"
+            position: absolute
+            inset-inline-end: 5px
+          tr:nth-child(even)
+            background-color: var(--color50)
+        .btItem:not(:last-child)
+          &:after
+            content: "⤸"
+            font-size: 32px
+            position: absolute
+            inset-inline-start: -22px
+            inset-block-end: -10px
+            transform: rotate(180deg)
+            line-height: 1rem
+            color: var(--color300)
+
+        .btData, .filterData
+          display: none
+          opacity: 0
+          flex-direction: column
+          gap: 10px
+          background: var(--color200)
+          border: 1px solid var(--color200)
+          padding: 20px
+          border-radius: 7px
+          transition: all 0.25s ease
+
+          position: absolute
+          inset-inline-end: 0
+          inset-block-start: 20px
+          code
+            display: block
+          &.visible
+            display: flex
+            animation: fadeIn 0.25s ease 0.1s forwards
+            z-index: 1
+
+          label
+            display: flex
+            align-items: center
+            gap: 10px
+        .btData
+          inset-inline-end: 40px
+        .filterData
+          button
+            border: 0
+            background: var(--color300)
+            padding-block: 5px
+            border-radius: 4px
+            cursor: pointer
+            margin-block-start: 20px
+
+        @keyframes fadeIn
+          from
+            opacity: 0
+          to
+            opacity: 1
+
+        .data
+          overflow: hidden
+        .invalidKey
+          color: #EF4444
+        .encrypted
+          color: #F472B6
+        @media(max-width:450px)
+          display: flex
+          flex-direction: column
+          gap: 5px
+
+
+
+      .tipContainer
+        block-size: 100%
+        inline-size: 100%
+        display: grid
+        place-items: center
+        @media(max-width: 450px)
+          display: none
+        .tip
+          display: grid
+          block-size: 100%
+          inline-size: 100%
+          grid-template-rows: 10% 1fr
+          align-items: center
+
+          h1, h2, h3
+            text-align: center
+            background: inherit
+          h1, h2
+            font-size: 1.2rem
+            @media(max-width:450px)
+              font-size: 0.9rem
+          h3
+            margin-block-end: 40px
+          img
+            user-select: none
+          &>div
+            max-inline-size: 700px
+            margin: auto
+            .tipContent
+              min-block-size: 200px
+              li
+                margin-block-end: 20px
+          footer
+            display: grid
+            grid-template-columns: 1fr 1fr
+            justify-items: center
+            gap: 50px 20px
+            margin-block-start: 60px
+            a
+              cursor: pointer
+              transition: all 0.25s ease
+              opacity: 0.8
+              &:hover
+                opacity: 1
+              &.tipHideLink
+                grid-column: 1 / 3
+
+
+      &.allInfoTogether
+        .msg:before
+          content: " "
+          background-size: contain
+          block-size: 16px
+          inline-size: 16px
+          display: inline-block
+          margin-inline-end: 8px
+          position: relative
+          top: 2px
+
+        .msg.l:before
+          background-image: url(logMsg.svg)
+        .msg.w:before
+          background-image: url(warningMsg.svg)
+        .msg.e:before
+          background-image: url(errorMsg.svg)
+      .jsonTree
+        //transform: translateY(-6px)
+        ul
+          list-style: none
+          //margin-block: 5px
+          margin: 0
+          padding: 0
+          cursor: default
+
+        li
+          list-style: none
+          padding-inline-start: 8px
+          position: relative
+          &.expandable
+            cursor: pointer
+            &:after
+              content: " "
+              position: absolute
+              inset-inline-start: -5px
+              inset-block-start: 1px
+              inline-size: 12px
+              block-size: 17px
+              background-image: url('data:image/svg+xml,<svg viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 512 512"><path d="m184.7 413.1 2.1-1.8 156.5-136c5.3-4.6 8.6-11.5 8.6-19.2 0-7.7-3.4-14.6-8.6-19.2L187.1 101l-2.6-2.3C182 97 179 96 175.8 96c-8.7 0-15.8 7.4-15.8 16.6v286.8c0 9.2 7.1 16.6 15.8 16.6 3.3 0 6.4-1.1 8.9-2.9z" fill="%238f8f8f" class="fill-000000"></path></svg>')
+              background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none"><path d="M10.5 6.65 4.9 2.8v7.7" fill="%238f8f8f"/></svg>')
+              background-repeat: no-repeat
+              background-size: 17px
+              cursor: pointer
+              transition: all 0.25s ease
+            .preview
+              cursor: pointer
+              transition: all 0.25s ease
+
+
+          &.expanded
+            &:after
+              transform: rotate(90deg) translateX(-2px) translateY(-3px)
+            li
+              padding-inline-start: 12px
+            &>.liContent .preview
+              font-size: 0.5rem
+              word-break: normal
+              opacity: 0.5
+            &>ul
+              margin-block-start: 5px
+          .expandable
+            &:after
+              inset-block-start: -1px
+              inset-inline-start: -6px
+          .liContent
+            display: inline-flex
+            align-items: center
+            gap: 5px
+            line-height: 1.5
+
+            .key
+              font-weight: 550
+              color: $primary500
+            .length, .preview
+              font-size: 0.72rem
+              opacity: 0.7
+            .preview
+              word-break: break-word
+
+          .simpleValue
+            display: inline-block
+            margin-inline-start: 5px
+            white-space: pre-line
+            &.boolean
+              font-style: italic
+
+
+
+.bconsConsoleDialog
+  position: absolute
+  inset-inline-end: 0
+  inset-block-end: 0
+  background-color: rgba(0,0,0,0.2)
+  z-index: 2
+  block-size: 100vb
+  inline-size: 100vi
+  display: none
+  place-items: center
+  h1
+    margin-block-end: 10px
+  &.visible
+    display: grid
+  .inner
+    padding: 20px
+    background-color: var(--color300)
+    coolor: var(--color800)
+    border-radius: 4px
+    inline-size: 1100px
+    max-inline-size: Min(calc(100vb - 80px), 600px)
+    margin-inline: 40px
+    max-block-size: 60vb
+    overflow: auto
+
+    .option
+      display: flex
+      flex-direction: column
+      gap: 6px
+      align-items: flex-start
+      margin-block-end: 20px
+      position: relative
+
+      &:last-of-type
+        margin-block-end: 0
+
+      &>label
+        font-weight: 450
+        //padding-inline-start: 30px
+        user-select: none
+
+      &>input[type="checkbox"]
+        position: absolute
+        inset-block-start: -1px
+
+      span, .value
+        padding-inline-start: 4ch
+      span
+        display: block
+        font-size: 0.85rem
+      span, .value label
+        font-size: 0.85rem
+      .sendConsoleHelp
+        display: none
+      .value
+        display: none
+        justify-content: center
+        align-items: center
+        gap: 10px
+        margin-block: 10px
+        input, textarea
+          border: 0
+          border-radius: 4px
+
+        &.withCheckList
+          inline-size: 100%
+          grid-template-columns: repeat(auto-fit,minmax(100px,1fr))
+          gap: 10px
+          align-items: start
+          .checkItem label
+            display: flex
+            align-items: flex-start
+            gap: 10px
+            user-select: none
+
+      &:has(input[data-main]:checked)
+        .value
+          display: flex
+        .value.withCheckList
+          display: grid
+        .sendConsoleHelp
+          display: block
+
+      & .value.withCheckList.visible
+        display: grid
+
+  .checkItem, .option
+    label
+      display: flex
+      align-items: flex-start
+      gap: 10px
+      user-select: none
+  footer
+    display: flex
+    justify-content: center
+    margin-block-start: 20px
+    button
+      border: 0
+      background: $primary
+      color: #fff
+      padding: 5px 15px
+      border-radius: 4px
+      cursor: pointer
+      transition: all 0.25s ease
+      &:hover
+        opacity: 0.8
+
+  input[type=password], input[type=text]
+    border-radius: 6px
+    border: 0
+    box-shadow: #fff 0px 0px 0px 0px inset, #d1d5db 0px 0px 0px 1px inset, rgba(0,0,0,.05) 0px 1px 2px 0px
+    transition: all .25s ease
+    padding-inline-start: 9px
+    inline-size: 320px
+    block-size: 36px
+    background-color: var(--color100)
+    margin: auto
+    margin-block: 20px
+    &:focus, &:active
+      outline: 1px solid #26aab2
+      box-shadow: none
+    &::placeholder
+      opacity: 0.5
+
+  .inputWithHelp
+    margin-block-end: 20px
+    input
+      margin-block-end: 10px
+    .help
+      font-size: 0.8rem
+  &.password, &.filters
+    .inner
+      display: flex
+      flex-direction: column
+      gap: 10px
+      font-size: 0.8rem
+      line-height: 1.2rem
+      margin: 0
+      p:last-of-type
+        margin-block-end: 0
+  &.password
+    .inner
+      label
+        display: flex
+        align-items: center
+        gap: 10px
+
+  &.filters
+    p
+      margin-block-end: 0
+    .inner
+      display: block
+
+      input[type="text"]
+        inline-size: 100%
+        margin-block-start: 10px
+
+
+// Dark mode
+.bconsConsole.dark, body.dark .bconsConsole
+  background-color: var(--color900)
+  color: var(--color100)
+  .bconsConsoleDialog .inner
+    background-color: var(--color800)
+    input
+      background-color: var(--color700)
+      color: var(--color50)
+  header, #noProject
+    background-color: inherit
+  footer a
+    color: $primary400
+  &.hasProject .projectData
+
+    .dialog .inner
+      background-color: var(--color800)
+      color: var(--color50)
+    header
+      .icons
+        filter: invert(1)
+        img
+          opacity: 0.5
+          &:hover
+            opacity: 0.8
+    nav
+      .typeTab
+        background-color: var(--color700)
+        border-color: var(--color800)
+        color: var(--color100)
+        &:hover, &.selected
+          background-color: var(--color600)
+          span
+            color: var(--color100)
+
+
+    .bconsBody
+      .encryptedMessage, .btIcon, .filterIcon
+        filter: invert(1)
+      .btData, .filterData, details
+        background: var(--color700)
+      .summary
+        border-block-end: 1px solid var(--color800)
+      .typePanel
+        color: var(--color300)
+      time
+        color: var(--color100)
+      .tableData table
+        th, td
+          border: 1px solid #333
+        th
+          text-align: start
+          background-color: #2e2e2e
+        tr:nth-child(even)
+          background-color: #1c1c1c
+      .msg
+        .request
+          color: $primary400
+        .fileInfo, .btItem .file
+          color: #4ADE80
+        .domain
+          color: #f89138
+        .btData, .filterData
+          border-color: var(--color800)
+        .filterData
+          button
+            background: var(--color900)
+
+        &.ping
+          background: var(--color800)
+      details
+        border-color: var(--color700)
+        background-color: var(--color800)
+        summary
+          border-block-end-color: var(--color700)
+        &.coloredGroup
+          time
+            color: #CBD5E1
+          .fileInfo, .btItem .file
+            color: #A7F3D0
+          .request
+            color: #BAE6FD
+          .msg.detail_w .msgContent
+            color: #FEF08A
+          .msg.detail_e .msgContent
+            color: #FCA5A5
+
+        &.group1, &.red
+          background-color: #7F1D1D
+          .btData, .filterData
+            background-color: #991B1B
+          summary
+            border-block-end-color: #450A0A
+          .btItem:not(:last-child):after
+            color: #B91C1C !important
+
+        &.group2, &.orange
+          background-color: #7C2D12
+          .btData, .filterData
+            background-color: #9A3412
+          summary
+            border-block-end-color: #431407
+          .btItem:not(:last-child):after
+            color: #C2410C !important
+
+        &.group3, &.amber
+          background-color: #78350F
+          .btData, .filterData
+            background-color: #92400E
+          summary
+            border-block-end-color: #451A03
+          .btItem:not(:last-child):after
+            color: #B45309 !important
+
+        &.group4, &.yellow
+          background-color: #713F12
+          .btData, .filterData
+            background-color: #854D0E
+          summary
+            border-block-end-color: #422006
+          .btItem:not(:last-child):after
+            color: #A16207 !important
+
+        &.group5, &.lime
+          background-color: #365314
+          .btData, .filterData
+            background-color: #3F6212
+          summary
+            border-block-end-color: #1A2E05
+          .btItem:not(:last-child):after
+            color: #4D7C0F !important
+
+        &.group6, &.green
+          background-color: #14532D
+          .btData, .filterData
+            background-color: #166534
+          summary
+            border-block-end-color: #052E16
+          .btItem:not(:last-child):after
+            color: #15803D !important
+
+        &.group7, &.emerald
+          background-color: #064E3B
+          .btData, .filterData
+            background-color: #065F46
+          summary
+            border-block-end-color: #022C22
+          .btItem:not(:last-child):after
+            color: #047857 !important
+
+        &.group8, &.teal
+          background-color: #134E4A
+          .btData, .filterData
+            background-color: #115E59
+          summary
+            border-block-end-color: #042F2E
+          .btItem:not(:last-child):after
+            color: #0F766E !important
+
+        &.group9, &.cyan
+          background-color: #164E63
+          .btData, .filterData
+            background-color: #155E75
+          summary
+            border-block-end-color: #083344
+          .btItem:not(:last-child):after
+            color: #0E7490 !important
+
+        &.group10, &.sky
+          background-color: #0C4A6E
+          .btData, .filterData
+            background-color: #075985
+          summary
+            border-block-end-color: #082F49
+          .btItem:not(:last-child):after
+            color: #0369A1 !important
+
+        &.group11, &.blue
+          background-color: #1E3A8A
+          .btData, .filterData
+            background-color: #1E40AF
+          summary
+            border-block-end-color: #172554
+          .btItem:not(:last-child):after
+            color: #1D4ED8 !important
+
+        &.group12, &.indigo
+          background-color: #312E81
+          .btData, .filterData
+            background-color: #3730A3
+          summary
+            border-block-end-color: #1E1B4B
+          .btItem:not(:last-child):after
+            color: #4338CA !important
+
+        &.group13, &.violet
+          background-color: #4C1D95
+          .btData, .filterData
+            background-color: #5B21B6
+          summary
+            border-block-end-color: #2E1065
+          .btItem:not(:last-child):after
+            color: #6D28D9 !important
+
+        &.group14, &.purple
+          background-color: #581C87
+          .btData, .filterData
+            background-color: #6B21A8
+          summary
+            border-block-end-color: #3B0764
+          .btItem:not(:last-child):after
+            color: #7E22CE !important
+
+        &.group15, &.fuchsia
+          background-color: #701A75
+          .btData, .filterData
+            background-color: #86198F
+          summary
+            border-block-end-color: #4A044E
+          .btItem:not(:last-child):after
+            color: #A21CAF !important
+
+        &.group16, &.pink
+          background-color: #831843
+          .btData, .filterData
+            background-color: #9D174D
+          summary
+            border-block-end-color: #500724
+          .btItem:not(:last-child):after
+            color: #BE185D !important
+
+        &.group17, &.rose
+          background-color: #881337
+          .btData, .filterData
+            background-color: #9F1239
+          summary
+            border-block-end-color: #4C0519
+          .btItem:not(:last-child):after
+            color: #BE123C !important
+
+        &.group18, &.stone
+          background-color: #1C1917
+          .btData, .filterData
+            background-color: #292524
+          summary
+            border-block-end-color: #0C0A09
+          .btItem:not(:last-child):after
+            color: #44403C !important
+
+        &.group19, &.neutral
+          background-color: #171717
+          .btData, .filterData
+            background-color: #262626
+          summary
+            border-block-end-color: #0A0A0A
+          .btItem:not(:last-child):after
+            color: #404040 !important
+
+        &.group20, &.zinc
+          background-color: #18181B
+          .btData, .filterData
+            background-color: #27272A
+          summary
+            border-block-end-color: #09090B
+          .btItem:not(:last-child):after
+            color: #3F3F46 !important
+
+        &.group21, &.gray
+          background-color: #111827
+          .btData, .filterData
+            background-color: #1F2937
+          summary
+            border-block-end-color: #030712
+          .btItem:not(:last-child):after
+            color: #374151 !important
+
+
+        &.group22, &.slate
+          background-color: #020617
+          .btData, .filterData
+            background-color: #1E293B
+          summary
+            border-block-end-color: #020617
+          .btItem:not(:last-child):after
+            color: #334155 !important
+.icons
+  button.warning
+    border: 1px solid red
+    &::after
+      content: "*"
+      position: absolute
+      inset-inline-end: 7px
+      inset-block-start: 17px
+      inline-size: 7px
+      block-size: 7px
+      background: #FCA5A5
+      font-size: 0
+      display: grid
+      place-items: center
+      border-radius: 50%
+
+
+// Container queries
+@container bconsoleContainer (inline-size <  800px)
+  header>a
+    display: none
+
+@container bconsoleContainer (inline-size <  730px)
+  header
+    display: flex
+    flex-direction: column-reverse
+    gap: 10px !important
+    justify-self: center
+    .icons
+      gap: 5px
+      align-self: flex-end
+
+    nav
+      .typeTab
+        span
+          position: absolute
+          inset-inline-end: 2px
+          inset-block-start: 2px
+          font-size: 10px
+          &::before, &::after
+            content: "" !important
+        .tabIcon
+          display: block !important
+        .tabName
+          display: none
+@container bconsoleContainer (inline-size <  500px)
+
+  .bconsConsole.hasProject .projectData header
+    .mobCurrentTab
+      display: block !important
+    nav
+      --in-small-screen: yes
+      display: none
+      flex-wrap: wrap
+      position: absolute
+      inset-inline-start: 10px
+      inset-block-start: 50px
+      inline-size: calc(100% - 20px)
+      background: var(--color100)
+      z-index: 3
+      gap: 10px
+      justify-content: center
+      padding-block: 5px
+      .typeTab
+        border-radius: 50% !important
+        span
+          position: absolute !important
+          inset-inline-end: 10px
+          inset-block-start: 9px
+
+    .typeTab
+      min-inline-size: auto !important
+  .projectData .bconsBody .msg .msgHeader
+    display: grid !important
+    grid-template-rows: auto auto
+    grid-template-columns: auto auto auto
+    grid-template-areas: "time domain icons" "url url file"
+    gap: 0px 10px !important
+    time
+      grid-area: time
+    .domain
+      grid-area: domain
+    .request
+      grid-area: url
+    .fileInfo
+      grid-area: file
+    .actions
+      grid-area: icons
+      justify-self: end
