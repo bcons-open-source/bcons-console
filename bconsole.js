@@ -1701,7 +1701,9 @@ export class Bconsole
   // Sets the initial values for the settings html elements
   initSettings()
   {
-    this.$(".theme").checked = this.setting("theme") == "dark";
+    const dialog = this.$(".bconsConsoleDialog.settings");
+
+    dialog.querySelector(".theme").checked = this.setting("theme") == "dark";
 
     [
       "msgDate", "msgDomain", "msgUrl", "msgFile", "invertScroll", "hideTips",
@@ -1709,14 +1711,14 @@ export class Bconsole
       "hideConsoleFile", "sendConsole"
     ].forEach(s =>
     {
-      const e = this.$(`.${s}`);
+      const e = dialog.querySelector(`.${s}`);
       if (e)
         e.checked = this.setting(s);
     });
 
     ["hiddenDomains", "hiddenUrls", "hiddenFiles"].forEach(s =>
     {
-      const e = this.$(`.${s}`);
+      const e = dialog.querySelector(`.${s}`);
       if (e)
         e.value = this.setting(s) || "";
     });
@@ -1725,12 +1727,12 @@ export class Bconsole
     if (Array.isArray(sendTabs))
       sendTabs.forEach(t =>
       {
-        this.$(".sendConsole_" + t).checked = true;
+        dialog.querySelector(".sendConsole_" + t).checked = true;
       });
 
 
     // For active tabs, first check all, then uncheck inactive
-    this.$$(".activeTabsSettings .value input").forEach(o =>
+    dialog.querySelectorAll(".activeTabsSettings .value input").forEach(o =>
       o.checked = true
     );
 
@@ -1738,7 +1740,7 @@ export class Bconsole
     if (inactiveTabs && Array.isArray(inactiveTabs))
       for (let type of this.msgTypes)
         if (inactiveTabs.includes(type))
-          this.$(".activeTabs_" + type).checked = false;
+          dialog.querySelector(".activeTabs_" + type).checked = false;
   }
 
   // Applies the current settings to the UI
